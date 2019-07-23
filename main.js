@@ -12,7 +12,7 @@ const adjectives = [
   "coy"
 ]
 
-const swearWords = [
+const moreAdjectives = [
   "cunning",
   "pliable",
   "glowing",
@@ -28,9 +28,6 @@ const swearWords = [
   "rainbow-infused"
 ]
 
-const altSwears = [
-
-]
 const nouns = [
   "land-mermaid",
   "muskox",
@@ -53,18 +50,12 @@ const nouns = [
   "sea fairy"
 ]
 
-function randomInsult(e) {
-  let safe = e.target.classList.contains("safe"); //boolean
-  let adj = randomWord(adjectives);
-  let swr;
-  if (safe) {
-    swr = randomWord(altSwears);
-  } else {
-    swr = randomWord(swearWords);
-  }
+function randomCompliment(e) {
+  let adj1 = randomWord(adjectives);
+  let adj2 = randomWord(moreAdjectives);
   let noun = randomWord(nouns);
-  injectHTML(adj, "adjective");
-  injectHTML(swr, "swear");
+  injectHTML(adj1, "adjective1");
+  injectHTML(adj2, "adjective2");
   injectHTML(noun, "noun");
 }
 
@@ -82,7 +73,3 @@ function injectHTML(word, boxID) {
   box.textContent = word;
 }
 
-function useAltSwear() {
-  let btn = document.getElementById("insult");
-  btn.classList.toggle("safe");
-}
